@@ -1,0 +1,31 @@
+{
+  "name": "js-shooter-game",
+  "version": "1.0.0",
+  "description": "A javascript shooter game using phaser.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "watch": "webpack --mode development --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okikiola11/js-shooter-rpg.git"
+  },
+  "keywords": [
+    "shooter-game",
+    "phaser.js",
+    "javascript",
+    "enemies"
+  ],
+  "author": "Apelehin Okikiola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/okikiola11/js-shooter-rpg/issues"
+  },
+  "homepage": "https://github.com/okikiola11/js-shooter-rpg#readme",
+  "devDependencies": {
+    "webpack": "^5.27.1",
+    "webpack-cli": "^4.5.0"
+  }
+}
