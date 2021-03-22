@@ -1,11 +1,18 @@
 import Phaser from 'phaser';
 import blueButton1 from '../assets/ui/blue_button02.png';
 import blueButton2 from '../assets/ui/blue_button03.png';
-import phaserLogo from '../assets/logo.png';
- 
+import explode from '../assets/explode.png';
+import box from '../assets/ui/grey_box.png';
+import blueBoxCheckMark from '../assets/ui/blue_boxCheckmark.png';
+// import battleTheme from '../assets/battleTheme.mp3';
+
 export default class PreloaderScene extends Phaser.Scene {
   constructor () {
     super('Preloader');
+  }
+
+  init() {
+    this.readyCount = 0;
   }
  
   preload () {
@@ -80,14 +87,16 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.load.image('blueButton1', blueButton1);
     this.load.image('blueButton2', blueButton2);
-    this.load.image('phaser-Logo', phaserLogo);
-  }
+    this.load.image('phaser-Logo', explode);
 
-  init() {
-    this.readyCount = 0;
+    this.load.image('box1', box);
+    this.load.image('checkedBox', blueBoxCheckMark);
+    // this.load.audio('bgMusic', [battleTheme]);
   }
   
   ready() {
+    this.scene.start('Title');
+    
     this.readyCount++;
     if (this.readyCount === 2) {
       this.scene.start('Title');
