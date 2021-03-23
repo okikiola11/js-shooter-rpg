@@ -7,6 +7,7 @@ export default class TitleScene extends Phaser.Scene {
   }
  
   preload () {
+    //this.load.audio('bgMusic', bgMusic);
   }
  
   create () {
@@ -20,6 +21,9 @@ export default class TitleScene extends Phaser.Scene {
     this.gameButton.on('pointerdown', function (pointer) {
       this.scene.start('Game');
     }.bind(this));
+
+    // const addBgMusic = this.sound.add(bgMusic);
+    // addBgMusic.play();
     
     this.input.on('pointerover', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton2');
