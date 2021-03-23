@@ -22,9 +22,6 @@ export default class TitleScene extends Phaser.Scene {
       this.scene.start('Game');
     }.bind(this));
 
-    // const addBgMusic = this.sound.add(bgMusic);
-    // addBgMusic.play();
-    
     this.input.on('pointerover', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton2');
     });
@@ -62,6 +59,14 @@ export default class TitleScene extends Phaser.Scene {
     this.input.on('pointerout', function (event, gameObjects) {
       gameObjects[0].setTexture('blueButton1');
     });
+
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn === true) {
+      this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });
+      this.invaders = this.sound.add('invaders', { volume: 0.5, loop: true });
+      this.bgMusic.play();
+      this.invaders.play();
+    }
   }
 
   centerButton(gameObject, offset = 0) {

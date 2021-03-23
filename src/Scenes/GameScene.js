@@ -1,5 +1,4 @@
 import 'phaser';
-import explode from '../assets/explode.png';
  
 export default class GameScene extends Phaser.Scene {
   constructor () {
@@ -7,6 +6,7 @@ export default class GameScene extends Phaser.Scene {
   }
  
   preload () {
+ 
   }
  
   create () {

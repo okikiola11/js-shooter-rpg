@@ -2,10 +2,11 @@ import Phaser from 'phaser';
 import blueButton1 from '../assets/ui/blue_button02.png';
 import blueButton2 from '../assets/ui/blue_button03.png';
 import explode from '../assets/explode.png';
-import logo from '../assets/ui/my-soldier.png';
+import logo from '../assets/logo.png';
 import box from '../assets/ui/grey_box.png';
 import checkedBox from '../assets/ui/blue_boxCheckmark.png';
-// import bgMusic from '../assets/battleTheme.mp3';
+import bgMusic from '../assets/assets_sndExplode0.wav';
+import invaders from '../assets/battleTheme.mp3';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor () {
@@ -17,7 +18,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
  
   preload () {
-    // add logo image
+    // add Logo image
     this.add.image(400, 200, logo);
     
     const width = this.cameras.main.width;
@@ -28,20 +29,12 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('blueButton2', blueButton2);
     this.load.image('box', box);
     this.load.image('checkedBox', checkedBox);
-    this.load.spritesheet('logoImg', explode, {
+    this.load.spritesheet('explode', explode, {
       frameWidth: 16,
       frameHeight: 24,
     });
-    //this.load.audio('bgMusic', bgMusic);
-
-    // create animation for images
-    // this.anims.create({
-    //   key: "logo",
-    //   frames: this.anims.generateFrameNumbers("logo"),
-    //   frameRate: 20,
-    //   repeat: -1
-    // });
-    
+    this.load.audio('bgMusic', bgMusic);
+    this.load.audio('invaders', invaders);
 
     // display progress bar
     const progressBar = this.add.graphics();
@@ -120,7 +113,7 @@ export default class PreloaderScene extends Phaser.Scene {
   ready() {
     this.readyCount++;
     if (this.readyCount === 2) {
-      this.scene.start('Options');
+      this.scene.start('Title');
     }
   }
  
