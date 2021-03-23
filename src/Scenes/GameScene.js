@@ -7,16 +7,9 @@ export default class GameScene extends Phaser.Scene {
   }
  
   preload () {
-    // load images
-    //this.load.image('logo', logoImg);
-    this.load.spritesheet('logo', explode, {
-      frameWidth: 142,
-      frameHeight: 142
-    });
   }
  
   create () {
-    //this.add.image(400, 300, 'logo');
     this.scene.start('Preloader');
   }
 };
