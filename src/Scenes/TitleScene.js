@@ -7,7 +7,6 @@ export default class TitleScene extends Phaser.Scene {
   }
  
   preload () {
-    //this.load.audio('bgMusic', bgMusic);
   }
  
   create () {
@@ -31,7 +30,7 @@ export default class TitleScene extends Phaser.Scene {
     });
 
     // Options
-    this.optionsButton = this.add.sprite(300, 200, 'blueButton').setInteractive();
+    this.optionsButton = this.add.sprite(300, 200, 'blueButton1').setInteractive();
     this.centerButton(this.optionsButton);
  
     this.optionsText = this.add.text(0, 0, 'Options', { fontSize: '32px', fill: '#fff' });
@@ -61,11 +60,14 @@ export default class TitleScene extends Phaser.Scene {
     });
 
     this.model = this.sys.game.globals.model;
-    if (this.model.musicOn === true) {
+
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
       this.bgMusic = this.sound.add('bgMusic', { volume: 0.5, loop: true });
-      this.invaders = this.sound.add('invaders', { volume: 0.5, loop: true });
+      // this.invaders = this.sound.add('invaders', { volume: 0.5, loop: true });
       this.bgMusic.play();
-      this.invaders.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+      // this.invaders.play();
     }
   }
 
