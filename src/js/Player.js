@@ -50,6 +50,4 @@ export default class Player extends Entity {
       }
     }
   }
-
-  
 }
