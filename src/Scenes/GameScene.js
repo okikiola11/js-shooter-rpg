@@ -1,5 +1,12 @@
 import 'phaser';
 import Player from '../js/Player';
+import GunShip from '../js/GunShip';
+import Carrier from '../js/Carrier'
+import Chaser from '../js/Chaser'
+// import sprEnemy01 from '../assets/content/sprEnemy0.png';
+// import sprEnemy11 from '../assets/content/sprEnemy1.png';
+// import sprEnemy21 from '../assets/content/sprEnemy2.png';
+
 
 export default class GameScene extends Phaser.Scene {
   constructor () {
@@ -7,25 +14,37 @@ export default class GameScene extends Phaser.Scene {
   }
  
   preload() {
-   
+    //this.load.image("sprEnemy0", sprEnemy0);
+    // this.load.spritesheet("sprEnemy0", '../assets/content/sprEnemy0.png', {
+    //   frameWidth: 93,
+    //   frameHeight: 65
+    // });
+    // this.load.image("sprEnemy1", '../assets/content/sprEnemy1.png');
+    // this.load.spritesheet("sprEnemy2", '../assets/content/sprEnemy2.png', {
+    //   frameWidth: 64,
+    //   frameHeight: 64
+    // });
   }
  
   create() {
     this.add.tileSprite(0, 0, 1800, 1400, 'starfield1')
     
-    this.anims.create({
-      key: "sprEnemy0",
-      frames: this.anims.generateFrameNumbers("sprEnemy0"),
-      frameRate: 20,
-      repeat: -1
-    });
+    // this.anims.create({
+    //   key: "sprEnemy0",
+    //   frames: this.anims.generateFrameNumbers("sprEnemy0"),
+    //   frameRate: 5,
+    //   repeat: -1
+    // });
+    // this.add.image(400, 200, 'sprEnemy0');
+    // this.add.image(400, 200, 'sprEnemy1');
+    // this.add.image(400, 200, 'sprEnemy2');
 
-    this.anims.create({
-      key: "sprEnemy2",
-      frames: this.anims.generateFrameNumbers("sprEnemy2"),
-      frameRate: 20,
-      repeat: -1
-    });
+    // this.anims.create({
+    //   key: "sprEnemy2",
+    //   frames: this.anims.generateFrameNumbers("sprEnemy2"),
+    //   frameRate: 5,
+    //   repeat: -1
+    // });
 
     this.anims.create({
       key: "sprExplosion",
@@ -62,6 +81,50 @@ export default class GameScene extends Phaser.Scene {
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+  
+    this.enemies = this.add.group();
+    this.enemyLasers = this.add.group();
+    this.playerLasers = this.add.group();
+
+    this.time.addEvent({
+      delay: 1000,
+      callback: function() {
+        var enemy = null;
+
+        if (Phaser.Math.Between(0, 10) >= 3) {
+          enemy = new GunShip(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0
+          );
+        }
+        else if (Phaser.Math.Between(0, 10) >= 5) {
+          if (this.getEnemiesByType("ChaserShip").length < 5) {
+
+            enemy = new Chaser(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0
+            );
+          }
+        }
+        else {
+          enemy = new Carrier(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0
+          );
+        }
+
+        if (enemy !== null) {
+          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          this.enemies.add(enemy);
+        }
+      },
+      callbackScope: this,
+      loop: true
+    });
+    
   }
 
   update() {
@@ -81,6 +144,21 @@ export default class GameScene extends Phaser.Scene {
       this.player.moveRight();
     }
 
-   
+    for (var i = 0; i < this.enemies.getChildren().length; i++) {
+      var enemy = this.enemies.getChildren()[i];
+
+      enemy.update();
+    }
+  }
+
+  getEnemiesByType(type) {
+    var arr = [];
+    for (var i = 0; i < this.enemies.getChildren().length; i++) {
+      var enemy = this.enemies.getChildren()[i];
+      if (enemy.getData("type") == type) {
+        arr.push(enemy);
+      }
+    }
+    return arr;
   }
 };

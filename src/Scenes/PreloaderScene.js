@@ -70,14 +70,18 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32
     });
+    this.load.spritesheet("sprExplosion", sprExplosion, {
+      frameWidth: 32,
+      frameHeight: 32
+    });
     this.load.spritesheet("sprEnemy0", sprEnemy0, {
       frameWidth: 93,
       frameHeight: 65
     });
-    this.load.image("sprEnemy1", sprEnemy1);
+    this.load.image("sprEnemy1", sprEnemy1)
     this.load.spritesheet("sprEnemy2", sprEnemy2, {
-      frameWidth: 16,
-      frameHeight: 16
+      frameWidth: 64,
+      frameHeight: 64
     });
     this.load.image("sprLaserEnemy0", sprLaserEnemy0);
     this.load.image("sprLaserPlayer", sprLaserPlayer);
