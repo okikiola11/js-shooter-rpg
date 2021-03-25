@@ -1,9 +1,9 @@
 import 'phaser';
 import Entity from './Entity';
 
-export default class Chaser extends Entity {
+export default class EnemyLaserChaser extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, "sprEnemy1", "Chaser");
+    super(scene, x, y, "sprEnemy1", "EnemyLaserChaser");
     this.body.velocity.y = Phaser.Math.Between(50, 100);
     
     this.states = {

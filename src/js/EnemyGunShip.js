@@ -2,9 +2,9 @@ import 'phaser';
 import Entity from './Entity';
 import EnemyLaser from './EnemyLaser'
 
-export default class GunShip extends Entity {
+export default class EnemyGunShip extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, "sprEnemy0", "GunShip");
+    super(scene, x, y, "sprEnemy0", "EnemyGunShip");
     
     
     this.body.velocity.y = Phaser.Math.Between(50, 100);

@@ -20,7 +20,7 @@ import background from '../assets/background2.png';
 import sprBg0 from '../assets/content/sprBg0.png';
 import sprBg1 from '../assets/content/sprBg1.png';
 import sprExplosion from '../assets/content/sprExplosion.png';
-import sprEnemy0 from '../assets/content/sprEnemy0.png';
+import sprEnemy00 from '../assets/content/sprEnemy0.png';
 import sprEnemy1 from '../assets/content/sprEnemy1.png';
 import sprEnemy2 from '../assets/content/sprEnemy2.png';
 import sprLaserEnemy0 from '../assets/content/sprLaserEnemy0.png';
@@ -28,7 +28,7 @@ import sprLaserPlayer from '../assets/content/sprLaserPlayer.png';
 import sprPlayer1 from '../assets/sprPlayer.png';
 import sndExplode0 from '../assets/sndExplode0.wav';
 import sndExplode1 from '../assets/sndExplode1.wav';
-// import sndLaser from '../assets/sndLaser.wav';
+import sndLaser from '../assets/sndLaser.wav';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor () {
@@ -63,6 +63,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.audio('bgMusic', bgMusic);
     this.load.audio('sndExplode0', sndExplode0);
     this.load.audio('sndExplode1', sndExplode1);
+    this.load.audio('sndLaser', sndLaser);
 
     this.load.image("sprBg0", sprBg0);
     this.load.image("sprBg1", sprBg1);
@@ -74,12 +75,12 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32
     });
-    this.load.spritesheet("sprEnemy0", sprEnemy0, {
+    this.load.spritesheet("sprEnemy5", sprEnemy00, {
       frameWidth: 93,
       frameHeight: 65
     });
     this.load.image("sprEnemy1", sprEnemy1)
-    this.load.spritesheet("sprEnemy2", sprEnemy2, {
+    this.load.spritesheet("sprEnemy9", sprEnemy2, {
       frameWidth: 64,
       frameHeight: 64
     });

@@ -1,11 +1,11 @@
 import 'phaser';
 import Player from '../js/Player';
-import GunShip from '../js/GunShip';
+import EnemyGunShip from '../js/EnemyGunShip';
 import Carrier from '../js/Carrier'
-import Chaser from '../js/Chaser'
-// import sprEnemy01 from '../assets/content/sprEnemy0.png';
-// import sprEnemy11 from '../assets/content/sprEnemy1.png';
-// import sprEnemy21 from '../assets/content/sprEnemy2.png';
+import EnemyLaserChaser from '../js/EnemyLaserChaser'
+// import sprEnemy0 from '../assets/content/sprEnemy0.png';
+// import sprEnemy1 from '../assets/content/sprEnemy1.png';
+// import sprEnemy2 from '../assets/content/sprEnemy2.png';
 
 
 export default class GameScene extends Phaser.Scene {
@@ -14,12 +14,12 @@ export default class GameScene extends Phaser.Scene {
   }
  
   preload() {
-    //this.load.image("sprEnemy0", sprEnemy0);
-    // this.load.spritesheet("sprEnemy0", '../assets/content/sprEnemy0.png', {
+    // this.load.image("sprEnemy0", sprEnemy0);
+    // this.load.spritesheet("sprEnemy5", '../assets/content/sprEnemy0.png', {
     //   frameWidth: 93,
     //   frameHeight: 65
     // });
-    // this.load.image("sprEnemy1", '../assets/content/sprEnemy1.png');
+    // this.load.image("sprEnemy9", '../assets/content/sprEnemy1.png');
     // this.load.spritesheet("sprEnemy2", '../assets/content/sprEnemy2.png', {
     //   frameWidth: 64,
     //   frameHeight: 64
@@ -29,22 +29,22 @@ export default class GameScene extends Phaser.Scene {
   create() {
     this.add.tileSprite(0, 0, 1800, 1400, 'starfield1')
     
-    // this.anims.create({
-    //   key: "sprEnemy0",
-    //   frames: this.anims.generateFrameNumbers("sprEnemy0"),
-    //   frameRate: 5,
-    //   repeat: -1
-    // });
-    // this.add.image(400, 200, 'sprEnemy0');
-    // this.add.image(400, 200, 'sprEnemy1');
-    // this.add.image(400, 200, 'sprEnemy2');
+    const sprEnemy5 = this.add.sprite(100, 100, 'sprEnemy5');
+    this.anims.create({
+      key: "sprEnemy5",
+      frames: this.anims.generateFrameNumbers("sprEnemy5"),
+      frameRate: 5,
+      repeat: -1
+    });
 
-    // this.anims.create({
-    //   key: "sprEnemy2",
-    //   frames: this.anims.generateFrameNumbers("sprEnemy2"),
-    //   frameRate: 5,
-    //   repeat: -1
-    // });
+    const sprEnemy9 = this.add.sprite(100, 100, 'sprEnemy9');
+    this.anims.create({
+      key: "sprEnemy9",
+      frames: this.anims.generateFrameNumbers('sprEnemy9'),
+      //frames: this.anims.generateFrameNames('sprEnemy1', {prefix:'sprEnemy1', start: 1, end: 2, suffix:'.png' }),
+      frameRate: 5,
+      repeat: -1
+    });
 
     this.anims.create({
       key: "sprExplosion",
@@ -66,7 +66,7 @@ export default class GameScene extends Phaser.Scene {
         this.sound.add("sndExplode0"),
         this.sound.add("sndExplode1")
       ],
-      //laser: this.sound.add("sndLaser")
+      laser: this.sound.add("sndLaser")
     };
 
     this.player = new Player(
@@ -92,16 +92,16 @@ export default class GameScene extends Phaser.Scene {
         var enemy = null;
 
         if (Phaser.Math.Between(0, 10) >= 3) {
-          enemy = new GunShip(
+          enemy = new EnemyGunShip(
             this,
             Phaser.Math.Between(0, this.game.config.width),
             0
           );
         }
         else if (Phaser.Math.Between(0, 10) >= 5) {
-          if (this.getEnemiesByType("ChaserShip").length < 5) {
+          if (this.getEnemiesByType("EnemyLaserChaserShip").length < 5) {
 
-            enemy = new Chaser(
+            enemy = new EnemyLaserChaser(
               this,
               Phaser.Math.Between(0, this.game.config.width),
               0
@@ -142,6 +142,15 @@ export default class GameScene extends Phaser.Scene {
     }
     else if (this.keyD.isDown) {
       this.player.moveRight();
+    }
+
+    // player can shoot now
+    if (this.keySpace.isDown) {
+      this.player.setData("isShooting", true);
+    }
+    else {
+      this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
+      this.player.setData("isShooting", false);
     }
 
     for (var i = 0; i < this.enemies.getChildren().length; i++) {
