@@ -3,18 +3,25 @@ import Player from '../js/Player';
 import EnemyGunShip from '../js/EnemyGunShip';
 import Carrier from '../js/Carrier'
 import EnemyLaserChaser from '../js/EnemyLaserChaser'
+import score from '../js/Score';
 
 export default class GameScene extends Phaser.Scene {
   constructor () {
     super('Game');
   }
  
+  init() {
+    this.score = 0;
+  }
+
   preload() {
   }
  
   create() {
     this.add.tileSprite(0, 0, 1800, 1400, 'starfield1')
     
+    this.scoreText = this.add.text(16, 16, `score: ${this.score}`)
+
     const sprEnemy51 = this.add.sprite(100, 100, 'sprEnemy51');
     this.anims.create({
       key: "sprEnemy51",
@@ -140,6 +147,11 @@ export default class GameScene extends Phaser.Scene {
       }
     });
     
+  }
+
+  addScore(amount) {
+    this.score = score(this.score, amount);
+    this.scoreText.setText(`Score: ${this.score}`);
   }
 
   update() {
