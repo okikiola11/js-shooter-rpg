@@ -4,7 +4,7 @@ import EnemyLaser from './EnemyLaser'
 
 export default class EnemyGunShip extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, "sprEnemy0", "EnemyGunShip");
+    super(scene, x, y, "sprEnemy51", "EnemyGunShip");
     
     
     this.body.velocity.y = Phaser.Math.Between(50, 100);
@@ -23,7 +23,7 @@ export default class EnemyGunShip extends Entity {
       callbackScope: this,
       loop: true
     });
-    this.play("sprEnemy0");
+    this.play("sprEnemy51");
   }
 
   onDestroy() {

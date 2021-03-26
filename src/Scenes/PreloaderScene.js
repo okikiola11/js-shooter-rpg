@@ -40,7 +40,6 @@ export default class PreloaderScene extends Phaser.Scene {
   }
  
   preload () {
-    // add Logo image
     this.add.image(400, 200, 'logo');
     
     const width = this.cameras.main.width;
@@ -71,19 +70,16 @@ export default class PreloaderScene extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 32
     });
-    this.load.spritesheet("sprExplosion", sprExplosion, {
-      frameWidth: 32,
-      frameHeight: 32
-    });
-    this.load.spritesheet("sprEnemy5", sprEnemy00, {
-      frameWidth: 93,
-      frameHeight: 65
+    this.load.spritesheet("sprEnemy51", sprEnemy00, {
+      frameWidth: 16,
+      frameHeight: 16
     });
     this.load.image("sprEnemy1", sprEnemy1)
-    this.load.spritesheet("sprEnemy9", sprEnemy2, {
-      frameWidth: 64,
-      frameHeight: 64
+    this.load.spritesheet("sprEnemy91", sprEnemy2, {
+      frameWidth: 16,
+      frameHeight: 16
     });
+    
     this.load.image("sprLaserEnemy0", sprLaserEnemy0);
     this.load.image("sprLaserPlayer", sprLaserPlayer);
     this.load.spritesheet("sprPlayer", sprPlayer1, {

@@ -14,6 +14,16 @@ export default class TitleScene extends Phaser.Scene {
     // Game
     this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Game');
   
+    this.title = this.add.text(this.game.config.width * 0.5, 128, "SPACE INVADERS", {
+      fontFamily: 'monospace',
+      fontSize: 48,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center'
+    });
+
+    this.title.setOrigin(0.5);
+
     // Options
     this.optionsButton = new Button(this, config.width/2, config.height/2, 'blueButton1', 'blueButton2', 'Options', 'Options');
   

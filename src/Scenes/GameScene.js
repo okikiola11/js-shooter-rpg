@@ -3,10 +3,9 @@ import Player from '../js/Player';
 import EnemyGunShip from '../js/EnemyGunShip';
 import Carrier from '../js/Carrier'
 import EnemyLaserChaser from '../js/EnemyLaserChaser'
-// import sprEnemy0 from '../assets/content/sprEnemy0.png';
+// import sprEnemy00 from '../assets/content/sprEnemy0.png';
 // import sprEnemy1 from '../assets/content/sprEnemy1.png';
 // import sprEnemy2 from '../assets/content/sprEnemy2.png';
-
 
 export default class GameScene extends Phaser.Scene {
   constructor () {
@@ -14,34 +13,32 @@ export default class GameScene extends Phaser.Scene {
   }
  
   preload() {
-    // this.load.image("sprEnemy0", sprEnemy0);
-    // this.load.spritesheet("sprEnemy5", '../assets/content/sprEnemy0.png', {
-    //   frameWidth: 93,
-    //   frameHeight: 65
+    // this.load.spritesheet("sprEnemy51", sprEnemy00, {
+    //   frameWidth: 16,
+    //   frameHeight: 16
     // });
-    // this.load.image("sprEnemy9", '../assets/content/sprEnemy1.png');
-    // this.load.spritesheet("sprEnemy2", '../assets/content/sprEnemy2.png', {
-    //   frameWidth: 64,
-    //   frameHeight: 64
+    // this.load.image("sprEnemy1", sprEnemy1)
+    // this.load.spritesheet("sprEnemy91", sprEnemy2, {
+    //   frameWidth: 16,
+    //   frameHeight: 16
     // });
   }
  
   create() {
     this.add.tileSprite(0, 0, 1800, 1400, 'starfield1')
     
-    const sprEnemy5 = this.add.sprite(100, 100, 'sprEnemy5');
+    const sprEnemy51 = this.add.sprite(100, 100, 'sprEnemy51');
     this.anims.create({
-      key: "sprEnemy5",
-      frames: this.anims.generateFrameNumbers("sprEnemy5"),
+      key: "sprEnemy51",
+      frames: this.anims.generateFrameNumbers("sprEnemy51"),
       frameRate: 5,
       repeat: -1
     });
 
-    const sprEnemy9 = this.add.sprite(100, 100, 'sprEnemy9');
+    const sprEnemy91 = this.add.sprite(100, 100, 'sprEnemy91');
     this.anims.create({
-      key: "sprEnemy9",
-      frames: this.anims.generateFrameNumbers('sprEnemy9'),
-      //frames: this.anims.generateFrameNames('sprEnemy1', {prefix:'sprEnemy1', start: 1, end: 2, suffix:'.png' }),
+      key: "sprEnemy91",
+      frames: this.anims.generateFrameNumbers('sprEnemy91'),
       frameRate: 5,
       repeat: -1
     });
@@ -124,33 +121,62 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true
     });
+
+    // ADD COLLISION BETWEEN THE TWO GAME OBJECTS
+    this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+
+        enemy.explode(true);
+        playerLaser.destroy();
+      }
+    });
+
+    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
+      if (!player.getData("isDead") &&
+          !enemy.getData("isDead")) {
+        player.explode(false);
+        enemy.explode(true);
+        player.onDestroy();
+      }
+    });
+
+    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
+      if (!player.getData("isDead") &&
+          !laser.getData("isDead")) {
+        player.explode(false);
+        laser.destroy();
+        player.onDestroy();
+      }
+    });
     
   }
 
   update() {
-    this.player.update();
-
-    if (this.keyW.isDown) {
-      this.player.moveUp();
-    }
-    else if (this.keyS.isDown) {
-      this.player.moveDown();
-    }
-
-    if (this.keyA.isDown) {
-      this.player.moveLeft();
-    }
-    else if (this.keyD.isDown) {
-      this.player.moveRight();
-    }
-
-    // player can shoot now
-    if (this.keySpace.isDown) {
-      this.player.setData("isShooting", true);
-    }
-    else {
-      this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
-      this.player.setData("isShooting", false);
+    if (!this.player.getData("isDead")) {
+      this.player.update();
+      if (this.keyW.isDown) {
+        this.player.moveUp();
+      }
+      else if (this.keyS.isDown) {
+        this.player.moveDown();
+      }
+      if (this.keyA.isDown) {
+        this.player.moveLeft();
+      }
+      else if (this.keyD.isDown) {
+        this.player.moveRight();
+      }
+    
+      if (this.keySpace.isDown) {
+        this.player.setData("isShooting", true);
+      }
+      else {
+        this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
+        this.player.setData("isShooting", false);
+      }
     }
 
     for (var i = 0; i < this.enemies.getChildren().length; i++) {
