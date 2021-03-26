@@ -51,6 +51,8 @@ export default class InputScene extends Phaser.Scene {
 
     this.gameButton.on('pointerdown', () => {
       if (nameInput.value !== '') {
+        // player name to localstorage
+        localStorage.setItem('playersName', nameInput.value);
         nameInput.style.display = 'none';
         this.scene.start('Game');
       } else {

@@ -1,30 +1,22 @@
 import Phaser from 'phaser';
 import blueButton1 from '../assets/ui/blue_button02.png';
 import blueButton2 from '../assets/ui/blue_button03.png';
-import explode from '../assets/explode.png';
 import logo1 from '../assets/logo.png';
 import box from '../assets/ui/grey_box.png';
 import checkedBox from '../assets/ui/blue_boxCheckmark.png';
 import bgMusic from '../assets/battleTheme.mp3';
 
-import bullet from '../assets/bullet.png';
-import enemyBullet from '../assets/enemy-bullet.png';
-import invader from '../assets/invader32x32x4.png';
-//import sprPlayer from '../assets/sprPlayer.png';
-import kaboom from '../assets/explode.png';
 import starfield from '../assets/starfield.png';
 import background from '../assets/background2.png';
 
-// new images
-
 import sprBg0 from '../assets/content/sprBg0.png';
 import sprBg1 from '../assets/content/sprBg1.png';
-import sprExplosion from '../assets/content/sprExplosion.png';
+import sprExplosion from '../assets/explode.png';
 import sprEnemy00 from '../assets/content/sprEnemy0.png';
-import sprEnemy1 from '../assets/content/sprEnemy1.png';
-import sprEnemy2 from '../assets/content/sprEnemy2.png';
-import sprLaserEnemy0 from '../assets/content/sprLaserEnemy0.png';
-import sprLaserPlayer from '../assets/content/sprLaserPlayer.png';
+import sprEnemy1 from '../assets/invader.png';
+import sprEnemy2 from '../assets/invader32x32x4.png'
+import sprLaserEnemy0 from '../assets/enemy-bullet.png';
+import sprLaserPlayer from '../assets/bullet.png';
 import sprPlayer1 from '../assets/sprPlayer.png';
 import sndExplode0 from '../assets/sndExplode0.wav';
 import sndExplode1 from '../assets/sndExplode1.wav';
@@ -51,10 +43,6 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('box', box);
     this.load.image('checkedBox', checkedBox);
     
-
-    this.load.image('bullet', bullet);
-    this.load.image('enemyBullet', enemyBullet);
-    
     this.load.image('starfield', starfield);
     this.load.image('background1', background);
     this.load.image('starfield1', starfield)
@@ -67,8 +55,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image("sprBg0", sprBg0);
     this.load.image("sprBg1", sprBg1);
     this.load.spritesheet("sprExplosion", sprExplosion, {
-      frameWidth: 32,
-      frameHeight: 32
+      frameWidth: 128,
+      frameHeight: 128
     });
     this.load.spritesheet("sprEnemy51", sprEnemy00, {
       frameWidth: 16,
@@ -76,8 +64,8 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     this.load.image("sprEnemy1", sprEnemy1)
     this.load.spritesheet("sprEnemy91", sprEnemy2, {
-      frameWidth: 16,
-      frameHeight: 16
+      frameWidth: 32,
+      frameHeight: 32
     });
     
     this.load.image("sprLaserEnemy0", sprLaserEnemy0);

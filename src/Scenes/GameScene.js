@@ -4,6 +4,7 @@ import EnemyGunShip from '../js/EnemyGunShip';
 import Carrier from '../js/Carrier'
 import EnemyLaserChaser from '../js/EnemyLaserChaser'
 import score from '../js/Score';
+import { getScores } from '../Objects/apiScore';
 
 export default class GameScene extends Phaser.Scene {
   constructor () {
@@ -51,6 +52,28 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 20,
       repeat: -1
     });
+
+    this.textScore = this.add.text(
+      12,
+      10,
+      `Score: ${this.score}`,
+      {
+        fontFamily: 'monospace',
+        fontSize: 20,
+        align: 'left',
+      },
+    );
+
+    this.topScoreApi = this.add.text(
+      200,
+      10,
+      'Top Score: ',
+      {
+        fontFamily: 'monospace',
+        fontSize: 20,
+        align: 'left',
+      },
+    );
 
     // Add sounds
     this.sfx = {
@@ -147,12 +170,14 @@ export default class GameScene extends Phaser.Scene {
       }
     });
     
+    //this.topScore()
   }
 
   addScore(amount) {
     this.score = score(this.score, amount);
     this.scoreText.setText(`Score: ${this.score}`);
   }
+
 
   update() {
     if (!this.player.getData("isDead")) {
@@ -177,6 +202,8 @@ export default class GameScene extends Phaser.Scene {
         this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
         this.player.setData("isShooting", false);
       }
+
+      localStorage.setItem('gameScore', this.score)
     }
 
     for (var i = 0; i < this.enemies.getChildren().length; i++) {

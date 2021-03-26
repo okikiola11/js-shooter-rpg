@@ -1,13 +1,5 @@
 import 'phaser';
 import config from '../Config/config';
-import Button from '../Objects/Button';
-import sprBtnPlay from '../assets/content/sprBtnPlay.png';
-import sprBtnPlayHover from '../assets/content/sprBtnPlayHover.png';
-import sprBtnPlayDown from '../assets/content/sprBtnPlayDown.png';
-import sprBtnRestart from '../assets/content/sprBtnRestart.png';
-import sprBtnRestartHover from '../assets/content/sprBtnRestartHover.png';
-import sprBtnRestartDown from '../assets/content/sprBtnRestartDown.png';
-
 import sndBtnOver from '../assets/content/sndBtnOver.wav';
 import sndBtnDown from '../assets/content/sndBtnDown.wav';
 
@@ -17,13 +9,6 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("sprBtnPlay", sprBtnPlay);
-    this.load.image("sprBtnPlayHover", sprBtnPlayHover);
-    this.load.image("sprBtnPlayDown", sprBtnPlayDown);
-    this.load.image("sprBtnRestart", sprBtnRestart);
-    this.load.image("sprBtnRestartHover", sprBtnRestartHover);
-    this.load.image("sprBtnRestartDown", sprBtnRestartDown);
-
     this.load.audio("sndBtnOver", sndBtnOver);
     this.load.audio("sndBtnDown", sndBtnDown);
   }
@@ -34,6 +19,17 @@ export default class GameOverScene extends Phaser.Scene {
       btnDown: this.sound.add("sndBtnDown")
     };
 
+    this.gameButton = this.add.sprite(200, 200, 'blueButton1').setInteractive();
+    this.centerButton(this.gameButton, 1);
+
+    this.gameText = this.add.text(0, 0, 'Restart', { fontSize: '32px', fill: '#fff' });
+    this.centerButtonText(this.gameText, this.gameButton);
+
+    this.gameButton.on('pointerdown', () => {
+      this.scene.start('Game');
+      this.sfx.btnDown.play();
+    });
+
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -42,34 +38,40 @@ export default class GameOverScene extends Phaser.Scene {
     });
     this.title.setOrigin(0.5);
 
-    this.btnRestart = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
-      "sprBtnRestart"
-    );
 
-    this.btnRestart.setInteractive();
+    this.gameButton3 = this.add.sprite(395, 390, 'blueButton1').setInteractive();
 
-    this.btnRestart.on("pointerover", function() {
-      this.btnRestart.setTexture("sprBtnRestartHover"); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
-    }, this);
+    this.gameText = this.add.text(0, 0, 'Leaderboard', { fontSize: '25px', fill: '#fff' });
+    this.centerButtonText(this.gameText, this.gameButton3);
 
-    this.btnRestart.on("pointerout", function() {
-      this.setTexture("sprBtnRestart");
+    this.gameButton3.on('pointerdown', () => {
+      this.scene.start('LeaderBoard');
+      this.sfx.btnDown.play();
     });
 
-    this.btnRestart.on("pointerdown", function() {
-      this.btnRestart.setTexture("sprBtnRestartDown");
-      this.sfx.btnDown.play();
-    }, this);
+    this.input.on('pointerover', (event, gameObjects) => {
+      gameObjects[0].setTexture('blueButton2');
+    });
 
-    this.btnRestart.on("pointerup", function() {
-      this.btnRestart.setTexture("sprBtnRestart");
-      this.scene.start("Game");
-    }, this);
-
+    this.input.on('pointerout', (event, gameObjects) => {
+      gameObjects[0].setTexture('blueButton1');
+    });
+  } 
+  
+  centerButton(gameObject, offset = 0) {
+    Phaser.Display.Align.In.Center(
+      gameObject,
+      this.add.zone(config.width / 2,
+        config.height / 2 - offset * 100,
+        config.width, config.height),
+    );
   }
 
+  centerButtonText(gameText, gameButton) {
+    Phaser.Display.Align.In.Center(
+      gameText,
+      gameButton,
+    );
+  }
 
 }
