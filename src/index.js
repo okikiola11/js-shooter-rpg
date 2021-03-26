@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from './Config/config';
 import Model from './Scenes/Model';
 import GameScene from './Scenes/GameScene';
@@ -10,9 +10,9 @@ import CreditsScene from './Scenes/CreditsScene';
 import InputScene from './Scenes/InputScene';
 import LeaderBoardScene from './Scenes/LeaderBoardScene';
 import GameOverScene from './Scenes/GameOverScene';
- 
+
 class Game extends Phaser.Game {
-  constructor () {
+  constructor() {
     super(config);
 
     const model = new Model();
@@ -30,5 +30,5 @@ class Game extends Phaser.Game {
     this.scene.start('Boot');
   }
 }
- 
+
 window.game = new Game();

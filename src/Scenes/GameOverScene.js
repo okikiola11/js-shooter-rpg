@@ -1,22 +1,22 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from '../Config/config';
 import sndBtnOver from '../assets/content/sndBtnOver.wav';
 import sndBtnDown from '../assets/content/sndBtnDown.wav';
 
 export default class GameOverScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('GameOver');
   }
 
   preload() {
-    this.load.audio("sndBtnOver", sndBtnOver);
-    this.load.audio("sndBtnDown", sndBtnDown);
+    this.load.audio('sndBtnOver', sndBtnOver);
+    this.load.audio('sndBtnDown', sndBtnDown);
   }
 
   create() {
     this.sfx = {
-      btnOver: this.sound.add("sndBtnOver"),
-      btnDown: this.sound.add("sndBtnDown")
+      btnOver: this.sound.add('sndBtnOver'),
+      btnDown: this.sound.add('sndBtnDown'),
     };
 
     this.gameButton = this.add.sprite(200, 200, 'blueButton1').setInteractive();
@@ -56,8 +56,8 @@ export default class GameOverScene extends Phaser.Scene {
     this.input.on('pointerout', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton1');
     });
-  } 
-  
+  }
+
   centerButton(gameObject, offset = 0) {
     Phaser.Display.Align.In.Center(
       gameObject,
@@ -73,5 +73,4 @@ export default class GameOverScene extends Phaser.Scene {
       gameButton,
     );
   }
-
 }

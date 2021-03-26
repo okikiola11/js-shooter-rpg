@@ -13,22 +13,21 @@ const getScores = async () => {
     return response.json();
   }
   throw new Error('Error');
-
 };
 
 const postScores = async (name, score) => {
-  const result = await fetch(`${baseURL}/games/${key}/scores`,
-  {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      user: name,
-      score: Number(score),
-    }),
-  });
+  const response = await fetch(`${baseURL}/games/${key}/scores`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user: name,
+        score: Number(score),
+      }),
+    });
   if (response.ok) {
     return response.json();
   }

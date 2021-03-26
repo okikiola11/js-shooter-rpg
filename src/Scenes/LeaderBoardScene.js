@@ -3,15 +3,11 @@ import config from '../Config/config';
 import { getScores } from '../Objects/apiScore';
 
 export default class LeaderBoardScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('LeaderBoard');
   }
- 
-  preload() {
-  }
-  
+
   create() {
-    console.log('hello');
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'LEADERBOARD', {
       fontFamily: 'monospace',
       fontSize: 48,
@@ -49,7 +45,6 @@ export default class LeaderBoardScene extends Phaser.Scene {
     });
 
     this.topScore();
-
   }
 
   async topScore() {
@@ -80,5 +75,4 @@ export default class LeaderBoardScene extends Phaser.Scene {
       gameButton,
     );
   }
-
-};
+}

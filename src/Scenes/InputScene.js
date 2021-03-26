@@ -1,11 +1,11 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from '../Config/config';
 
 export default class InputScene extends Phaser.Scene {
   constructor() {
     super('Input');
   }
- 
+
   create() {
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'SPACE INVADERS', {
       fontFamily: 'monospace',
@@ -29,7 +29,7 @@ export default class InputScene extends Phaser.Scene {
     nameInput.id = 'username';
 
     document.querySelector('#game-play').appendChild(nameInput);
-   
+
 
     this.title1 = this.add.text(70, 350,
       'Please use the keys W A S D and Space to play', {
@@ -67,7 +67,6 @@ export default class InputScene extends Phaser.Scene {
     this.input.on('pointerout', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton1');
     });
-
   }
 
   centerButton(gameObject, offset = 0) {
@@ -84,5 +83,4 @@ export default class InputScene extends Phaser.Scene {
       gameButton,
     );
   }
-
 }

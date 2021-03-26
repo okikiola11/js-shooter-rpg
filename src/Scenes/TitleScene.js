@@ -1,34 +1,30 @@
-import 'phaser';
+import Phaser from 'phaser';
 import config from '../Config/config';
 import Button from '../Objects/Button';
 
 export default class TitleScene extends Phaser.Scene {
-  constructor () {
+  constructor() {
     super('Title');
   }
- 
-  preload () {
-  }
- 
-  create () {
-    // Game
-    this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Input');
-  
-    this.title = this.add.text(this.game.config.width * 0.5, 128, "SPACE INVADERS", {
+
+  create() {
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'blueButton1', 'blueButton2', 'Play', 'Input');
+
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'SPACE INVADERS', {
       fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
-      align: 'center'
+      align: 'center',
     });
 
     this.title.setOrigin(0.5);
 
     // Options
-    this.optionsButton = new Button(this, config.width/2, config.height/2, 'blueButton1', 'blueButton2', 'Options', 'Options');
-  
+    this.optionsButton = new Button(this, config.width / 2, config.height / 2, 'blueButton1', 'blueButton2', 'Options', 'Options');
+
     // Credits
-    this.creditsButton = new Button(this, config.width/2, config.height/2 + 100, 'blueButton1', 'blueButton2', 'Rules', 'Credits');
+    this.creditsButton = new Button(this, config.width / 2, config.height / 2 + 100, 'blueButton1', 'blueButton2', 'Rules', 'Credits');
 
 
     this.model = this.sys.game.globals.model;
@@ -42,4 +38,4 @@ export default class TitleScene extends Phaser.Scene {
       // this.invaders.play();
     }
   }
-};
+}
