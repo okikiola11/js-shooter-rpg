@@ -3,9 +3,6 @@ import Player from '../js/Player';
 import EnemyGunShip from '../js/EnemyGunShip';
 import Carrier from '../js/Carrier'
 import EnemyLaserChaser from '../js/EnemyLaserChaser'
-// import sprEnemy00 from '../assets/content/sprEnemy0.png';
-// import sprEnemy1 from '../assets/content/sprEnemy1.png';
-// import sprEnemy2 from '../assets/content/sprEnemy2.png';
 
 export default class GameScene extends Phaser.Scene {
   constructor () {
@@ -13,15 +10,6 @@ export default class GameScene extends Phaser.Scene {
   }
  
   preload() {
-    // this.load.spritesheet("sprEnemy51", sprEnemy00, {
-    //   frameWidth: 16,
-    //   frameHeight: 16
-    // });
-    // this.load.image("sprEnemy1", sprEnemy1)
-    // this.load.spritesheet("sprEnemy91", sprEnemy2, {
-    //   frameWidth: 16,
-    //   frameHeight: 16
-    // });
   }
  
   create() {

@@ -5,7 +5,7 @@ export default {
   parent: 'space-invaders',
   width: 800,
   height: 600,
-  backgroundColor: "black",
+  backgroundColor: "#2d2d2d",
   physics: {
     default: 'arcade',
     arcade: {

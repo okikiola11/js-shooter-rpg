@@ -40,7 +40,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
  
   preload () {
-    this.add.image(400, 200, 'logo');
+    
     
     const width = this.cameras.main.width;
     const height = this.cameras.main.height;
@@ -162,5 +162,15 @@ export default class PreloaderScene extends Phaser.Scene {
   }
  
   create () {
+    const logos = this.add.image(400, 200, 'logo');
+
+    this.tweens.add({
+      targets: logos,
+      y: 450,
+      duration: 1000,
+      ease: "Power2",
+      yoyo: true,
+      loop: -1
+    })
   }
 };
