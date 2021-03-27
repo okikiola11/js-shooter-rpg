@@ -24,14 +24,21 @@ This project is an RPG shooter game built with Phaser 3, a JavaScript game frame
 To get a copy up and running follow these simple example steps:-
 
 - Clone https://github.com/okikiola11/js-shooter-rpg.git to your local machine.
-- cd into the weather-app directory and navigate into the dist directory.
-- Open the index.html file with the browser
-
-
-## Usage
-- Clone the project to your local machine
 - Run npm install
 - npm start
+
+
+## Loading Screen
+
+### Menu Screen
+![screenshot](src/assets/screensht/screenshot1.png)
+
+### Options Screen
+![screenshot](src/assets/screensht/screenshot2.png)
+
+### Game Screen
+![screenshot](src/assets/screensht/screenshot3.png)
+
 
 ## Game Development
 
@@ -42,10 +49,10 @@ To get a copy up and running follow these simple example steps:-
 - I planned to start implementing the logic, however I realized I needed deeper understanding of how to approach the project.
 
 ### Day 1
-- I started implementing game logic (preloader, title, game over, etc.). However, I still got a blocker from uploading the spritesheet image which delayed my progress
+- I started implementing game logic (preloader, title, game over, etc.). I still got a blocker from uploading the spritesheet image which delayed my progress but I continued working
 
 ### Day 2 
-- Continued with the implementation, creating modules 
+- Continued with the implementation, created the modules, the screens, the objects. I made more progress
 
 ### Live Demo
 <a href="">Click here</div>
