@@ -1,3 +1,4 @@
+
 import Phaser from 'phaser';
 import Entity from './Entity';
 
@@ -11,7 +12,6 @@ export default class EnemyLaserChaser extends Entity {
       CHASE: 'CHASE',
     };
     this.state = this.states.MOVE_DOWN;
-    // this.play("sprEnemy1");
   }
 
   update() {
