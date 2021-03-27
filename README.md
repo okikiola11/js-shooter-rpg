@@ -52,7 +52,7 @@ To get a copy up and running follow these simple example steps:-
 - I started implementing game logic (preloader, title, game over, etc.). I still got a blocker from uploading the spritesheet image which delayed my progress but I continued working
 
 ### Day 2 
-- Continued with the implementation, created the modules, the screens, the objects. I made more progress writing the logic spawning the enemies, created the player etc
+- Continued with the implementation, created the modules, the screens, the objects. I made more progress writing the logic for the game.
 
 ### Live Demo
 <a href="">Click here</div>
