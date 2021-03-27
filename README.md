@@ -55,7 +55,7 @@ To get a copy up and running follow these simple example steps:-
 - Continued with the implementation, created the modules, the screens, the objects. I made more progress writing the logic for the game.
 
 ### Live Demo
-<a href="">Click here</div>
+<a href="https://elated-lumiere-273d6b.netlify.app/">Click here</div>
 
 
 ## Author

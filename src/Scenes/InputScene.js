@@ -28,6 +28,10 @@ export default class InputScene extends Phaser.Scene {
     nameInput.type = 'text';
     nameInput.id = 'username';
 
+    document.querySelector('#game-play').style.position = 'absolute';
+    document.querySelector('#game-play').style.top = '200px';
+    document.querySelector('#game-play').style.left = '270px';
+
     document.querySelector('#game-play').appendChild(nameInput);
 
     this.alertMsg = this.add.text(250, 400, '', {
