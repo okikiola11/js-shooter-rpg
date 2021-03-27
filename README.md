@@ -16,7 +16,7 @@ This project is an RPG shooter game built with Phaser 3, a JavaScript game frame
 ## How To Play
 - Drive the shooter jet with your keyboard arrows.
 - Press keys A, W, S, D to move left, up, down and right
-- Use the spacebar to shoot the invaders enemy beasts to gain points.
+- Use the spacebar to shoot the invaders enemy to gain points.
 
 - Avoid getting shot or colliding with the enemy.
 
@@ -52,7 +52,7 @@ To get a copy up and running follow these simple example steps:-
 - I started implementing game logic (preloader, title, game over, etc.). I still got a blocker from uploading the spritesheet image which delayed my progress but I continued working
 
 ### Day 2 
-- Continued with the implementation, created the modules, the screens, the objects. I made more progress
+- Continued with the implementation, created the modules, the screens, the objects. I made more progress writing the logic spawning the enemies, created the player etc
 
 ### Live Demo
 <a href="">Click here</div>

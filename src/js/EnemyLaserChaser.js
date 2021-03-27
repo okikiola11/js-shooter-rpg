@@ -1,4 +1,4 @@
-
+/* eslint-disable eqeqeq */
 import Phaser from 'phaser';
 import Entity from './Entity';
 

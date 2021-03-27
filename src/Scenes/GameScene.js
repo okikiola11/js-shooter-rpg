@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable eqeqeq */
 import Phaser from 'phaser';
 import Player from '../js/Player';
 import EnemyGunShip from '../js/EnemyGunShip';
