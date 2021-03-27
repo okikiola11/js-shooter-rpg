@@ -19,9 +19,11 @@ export default class GameScene extends Phaser.Scene {
   create() {
     this.add.tileSprite(0, 0, 1800, 1400, 'starfield1');
 
-    this.scoreText = this.add.text(16, 16, `score: ${this.score}`);
+    this.scoreText = this.add.text(16, 16, `Score: ${this.score}`, {
+      fontSize: 20,
+      align: 'left',
+    });
 
-    // const sprEnemy51 = this.add.sprite(100, 100, 'sprEnemy51');
     this.anims.create({
       key: 'sprEnemy51',
       frames: this.anims.generateFrameNumbers('sprEnemy51'),
@@ -29,7 +31,6 @@ export default class GameScene extends Phaser.Scene {
       repeat: -1,
     });
 
-    // const sprEnemy91 = this.add.sprite(100, 100, 'sprEnemy91');
     this.anims.create({
       key: 'sprEnemy91',
       frames: this.anims.generateFrameNumbers('sprEnemy91'),
@@ -51,23 +52,11 @@ export default class GameScene extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.textScore = this.add.text(
-      12,
-      10,
-      `Score: ${this.score}`,
-      {
-        fontFamily: 'monospace',
-        fontSize: 20,
-        align: 'left',
-      },
-    );
-
     this.topScoreApi = this.add.text(
       200,
       10,
       'Top Score: ',
       {
-        fontFamily: 'monospace',
         fontSize: 20,
         align: 'left',
       },

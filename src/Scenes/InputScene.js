@@ -9,7 +9,6 @@ export default class InputScene extends Phaser.Scene {
 
   create() {
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'SPACE INVADERS', {
-      fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
@@ -31,17 +30,7 @@ export default class InputScene extends Phaser.Scene {
 
     document.querySelector('#game-play').appendChild(nameInput);
 
-
-    this.title1 = this.add.text(70, 350,
-      'Please use the keys W A S D and Space to play', {
-        fontFamily: 'monospace',
-        fontSize: 25,
-        fontStyle: 'bold',
-        color: '#ffffff',
-      });
-
     this.alertMsg = this.add.text(250, 400, '', {
-      fontFamily: 'monospace',
       fontSize: 25,
       fontStyle: 'bold',
       color: 'red',

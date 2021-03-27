@@ -10,28 +10,24 @@ export default class LeaderBoardScene extends Phaser.Scene {
 
   create() {
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'LEADERBOARD', {
-      fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
     });
     this.title.setOrigin(0.5);
     this.score11 = this.add.text(150, 200, 'Scores', {
-      fontFamily: 'monospace',
       fontSize: 32,
       color: 'pink',
       align: 'center',
     });
 
     this.score21 = this.add.text(150, 250, 'Scores', {
-      fontFamily: 'monospace',
       fontSize: 32,
       color: 'pink',
       align: 'center',
     });
 
     this.score31 = this.add.text(150, 300, 'Scores', {
-      fontFamily: 'monospace',
       fontSize: 32,
       color: 'pink',
       align: 'center',

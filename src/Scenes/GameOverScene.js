@@ -32,7 +32,6 @@ export default class GameOverScene extends Phaser.Scene {
     });
 
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'GAME OVER', {
-      fontFamily: 'monospace',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',

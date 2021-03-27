@@ -88,8 +88,9 @@ export default class PreloaderScene extends Phaser.Scene {
       y: height / 2 - 50,
       text: 'Loading...',
       style: {
-        font: '20px monospace',
-        fill: '#ffffff',
+        fontSize: 20,
+        fill: '#fff',
+        fontStyle: 'bold',
       },
     });
     loadingText.setOrigin(0.5, 0.5);
@@ -99,7 +100,7 @@ export default class PreloaderScene extends Phaser.Scene {
       y: height / 2 - 5,
       text: '0%',
       style: {
-        font: '18px monospace',
+        font: '18px',
         fill: '#ffffff',
       },
     });
@@ -110,7 +111,7 @@ export default class PreloaderScene extends Phaser.Scene {
       y: height / 2 + 50,
       text: '',
       style: {
-        font: '18px monospace',
+        font: '18px',
         fill: '#ffffff',
       },
     });
