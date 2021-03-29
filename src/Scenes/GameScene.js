@@ -6,6 +6,7 @@ import EnemyGunShip from '../js/EnemyGunShip';
 import Carrier from '../js/Carrier';
 import EnemyLaserChaser from '../js/EnemyLaserChaser';
 import score from '../js/Score';
+import { getScores } from '../Objects/apiScore';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -55,7 +56,7 @@ export default class GameScene extends Phaser.Scene {
     this.topScoreApi = this.add.text(
       200,
       10,
-      'Top Score: ',
+      `Top Score: `,
       {
         fontSize: 20,
         align: 'left',
@@ -154,12 +155,26 @@ export default class GameScene extends Phaser.Scene {
       }
     });
 
-    // this.topScore()
+    this.topScore()
   }
 
   addScore(amount) {
     this.score = score(this.score, amount);
     this.scoreText.setText(`Score: ${this.score}`);
+  }
+
+  async topScore() {
+    const response = await getScores();
+
+    if (Array.isArray(response.result)) {
+      this.scores = response.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
+      for (let i = 0; i < 1; i += 1) {
+        this.topScoreApi.setText(`Top Score: ${this.scores[i].score}`);
+        localStorage.setItem('highScore', this.scores[i].score);
+      }
+    } else {
+      this.topScoreApi.setText(`Score: ${response}`);
+    }
   }
 
 
