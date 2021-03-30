@@ -17,19 +17,19 @@ export default class LeaderBoardScene extends Phaser.Scene {
     this.title.setOrigin(0.5);
     this.score11 = this.add.text(150, 200, 'Scores', {
       fontSize: 32,
-      color: 'pink',
+      color: '#ffffff',
       align: 'center',
     });
 
     this.score21 = this.add.text(150, 250, 'Scores', {
       fontSize: 32,
-      color: 'pink',
+      color: '#ffffff',
       align: 'center',
     });
 
     this.score31 = this.add.text(150, 300, 'Scores', {
       fontSize: 32,
-      color: 'pink',
+      color: '#ffffff',
       align: 'center',
     });
     this.gameButton = this.add.sprite(390, 500, 'blueButton1').setInteractive();
@@ -49,9 +49,9 @@ export default class LeaderBoardScene extends Phaser.Scene {
 
     if (Array.isArray(scoreDetails.result)) {
       this.scores = scoreDetails.result.sort((a, b) => ((a.score > b.score) ? -1 : 1));
-      this.score11.setText(`${1} --- ${this.scores[0].user} --- ${this.scores[0].score}`);
-      this.score21.setText(`${2} --- ${this.scores[1].user} --- ${this.scores[1].score}`);
-      this.score31.setText(`${3} --- ${this.scores[2].user} --- ${this.scores[2].score}`);
+      this.score11.setText(`${1}  ${this.scores[0].user}  ${this.scores[0].score}`);
+      this.score21.setText(`${2}  ${this.scores[1].user}  ${this.scores[1].score}`);
+      this.score31.setText(`${3}  ${this.scores[2].user}  ${this.scores[2].score}`);
     } else {
       this.score1.setText(scoreDetails);
     }

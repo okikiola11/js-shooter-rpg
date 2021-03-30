@@ -15,15 +15,13 @@ This project is an RPG shooter game built with Phaser 3, a JavaScript game frame
 
 ## How To Play
 - Drive the shooter jet with your keyboard arrows.
-- Press keys A, W, S, D to move left, up, down and right
 - Use the spacebar to shoot the invaders enemy to gain points.
-
 - Avoid getting shot or colliding with the enemy.
 
 ## Getting Started
 To get a copy up and running follow these simple example steps:-
 
-- Clone https://github.com/okikiola11/js-shooter-rpg.git to your local machine.
+- Clone <a href="https://github.com/okikiola11/js-shooter-rpg.git">Here</a> to your local machine.
 - Run npm install
 - npm start
 
@@ -39,6 +37,8 @@ To get a copy up and running follow these simple example steps:-
 ### Game Screen
 ![screenshot](src/assets/screensht/screenshot3.png)
 
+### Game Screen
+![screenshot](src/assets/screensht/screenshot5.png)
 
 ## Game Development
 

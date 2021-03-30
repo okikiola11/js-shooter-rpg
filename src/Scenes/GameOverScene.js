@@ -31,7 +31,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.gameButton = this.add.sprite(200, 200, 'blueButton1').setInteractive();
     this.centerButton(this.gameButton, 1);
 
-    this.gameText = this.add.text(0, 0, 'Restart', { fontSize: '32px', fill: '#fff' });
+    this.gameText = this.add.text(0, 0, 'Play Again', { fontSize: '28px', fill: '#fff' });
     this.centerButtonText(this.gameText, this.gameButton);
 
     this.gameButton.on('pointerdown', () => {

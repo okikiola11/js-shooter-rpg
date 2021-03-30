@@ -2,6 +2,8 @@
 import Phaser from 'phaser';
 import config from '../Config/config';
 
+import '../assets/css/style.css';
+
 export default class InputScene extends Phaser.Scene {
   constructor() {
     super('Input');

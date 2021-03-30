@@ -7,7 +7,7 @@ import blueButton2 from '../assets/ui/blue_button03.png';
 import logo1 from '../assets/logo.png';
 import box from '../assets/ui/grey_box.png';
 import checkedBox from '../assets/ui/blue_boxCheckmark.png';
-import bgMusic from '../assets/battleTheme.mp3';
+import bgMusic from '../assets/KatyPerry.mp3';
 
 import starfield from '../assets/starfield.png';
 import background from '../assets/background2.png';
@@ -20,7 +20,7 @@ import sprEnemy1 from '../assets/invader.png';
 import sprEnemy2 from '../assets/invader32x32x4.png';
 import sprLaserEnemy0 from '../assets/enemy-bullet.png';
 import sprLaserPlayer from '../assets/bullet.png';
-import sprPlayer1 from '../assets/sprPlayer.png';
+import sprPlayer1 from '../assets/player.png';
 import sndExplode0 from '../assets/sndExplode0.wav';
 import sndExplode1 from '../assets/sndExplode1.wav';
 import sndLaser from '../assets/sndLaser.wav';
@@ -72,11 +72,10 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('sprLaserEnemy0', sprLaserEnemy0);
     this.load.image('sprLaserPlayer', sprLaserPlayer);
     this.load.spritesheet('sprPlayer', sprPlayer1, {
-      frameWidth: 32,
-      frameHeight: 32,
+      frameWidth: 28,
+      frameHeight: 21,
     });
 
-    // display progress bar
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
@@ -117,7 +116,6 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     assetText.setOrigin(0.5, 0.5);
 
-    // update progress bar
     this.load.on('progress', (value) => {
       percentText.setText(`${parseInt(value * 100)}%`);
       progressBar.clear();
@@ -125,12 +123,10 @@ export default class PreloaderScene extends Phaser.Scene {
       progressBar.fillRect(250, 280, 300 * value, 30);
     });
 
-    // update file progress text
     this.load.on('fileprogress', (file) => {
       assetText.setText(`Loading asset: ${file.key}`);
     });
 
-    // remove progress bar when complete
     this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
@@ -148,18 +144,5 @@ export default class PreloaderScene extends Phaser.Scene {
     if (this.readyCount === 2) {
       this.scene.start('Title');
     }
-  }
-
-  create() {
-    const logos = this.add.image(400, 200, 'logo');
-
-    this.tweens.add({
-      targets: logos,
-      y: 450,
-      duration: 1000,
-      ease: 'Power2',
-      yoyo: true,
-      loop: -1,
-    });
   }
 }

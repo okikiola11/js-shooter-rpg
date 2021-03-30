@@ -20,13 +20,7 @@ export default class CreditsScene extends Phaser.Scene {
       fontStyle: 'bold',
     });
 
-    this.bgByText = this.add.text(0, 0, 'Game Background by: ', {
-      fontSize: '30px',
-      fill: '#fff',
-      fontStyle: 'bold',
-    });
-
-    this.musicByText = this.add.text(0, 0, 'Music by: Ketsa - Seeing you again', {
+    this.musicByText = this.add.text(0, 0, 'Music by: Katy Perry - Roar', {
       fontSize: '30px',
       fill: '#fff',
       fontStyle: 'bold',
@@ -45,11 +39,11 @@ export default class CreditsScene extends Phaser.Scene {
     );
     Phaser.Display.Align.In.Center(this.creditsText, this.zone);
     Phaser.Display.Align.In.Center(this.madeByText, this.zone);
-    Phaser.Display.Align.In.Center(this.bgByText, this.zone);
+    //Phaser.Display.Align.In.Center(this.bgByText, this.zone);
     Phaser.Display.Align.In.Center(this.musicByText, this.zone);
 
     this.madeByText.setY(1000);
-    this.bgByText.setY(1000);
+    //this.bgByText.setY(1000);
     this.musicByText.setY(1000);
 
     this.creditsTween = this.tweens.add({
@@ -73,18 +67,6 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete() {
         // eslint-disable-next-line no-unused-expressions
         this.madeByText.destroy;
-      },
-    });
-
-    this.bgByTween = this.tweens.add({
-      targets: this.bgByText,
-      y: 300,
-      ease: 'Power1',
-      duration: 8000,
-      delay: 1000,
-      onComplete() {
-        // eslint-disable-next-line no-unused-expressions
-        this.bgByTween.destroy;
       },
     });
 
