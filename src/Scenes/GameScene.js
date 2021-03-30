@@ -78,7 +78,7 @@ export default class GameScene extends Phaser.Scene {
       this.game.config.height * 0.5,
       'sprPlayer',
     );
-    
+
     this.cursorKeys = this.input.keyboard.createCursorKeys();
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
