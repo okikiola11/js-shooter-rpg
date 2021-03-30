@@ -8,5 +8,7 @@
 }
 
 #game-play {
-  border: 1px solid orange;
+  position: absolute;
+  top: 200px;
+  left: 270px;
 }

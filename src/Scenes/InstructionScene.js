@@ -9,7 +9,7 @@ export default class InstructionScene extends Phaser.Scene {
     const width = this.game.config.width * 0.5;
 
     this.title = this.add.text(
-      300,
+      270,
       80,
       'HOW TO PLAY',
       {
@@ -42,7 +42,7 @@ export default class InstructionScene extends Phaser.Scene {
     );
 
     this.instruction3 = this.add.text(
-      300,
+      270,
       300,
       'Ready to Play?',
       {
@@ -53,14 +53,14 @@ export default class InstructionScene extends Phaser.Scene {
     );
 
     this.gameButton = this.add.sprite(width - 100, 400, 'blueButton1').setInteractive();
-    this.gameText = this.add.text(this, 0, 'Play', 32);
+    this.gameText = this.add.text(this, 0, 'Play', { fontSize: 32 });
     this.centerButtonText(this.gameText, this.gameButton);
     this.gameButton.on('pointerdown', () => {
       this.scene.start('Game');
     });
 
     this.backButton = this.add.sprite(width + 100, 400, 'blueButton1').setInteractive();
-    this.backText = this.add.text(this, 0, 'Back', 32);
+    this.backText = this.add.text(this, 0, 'Back', { fontSize: 32 });
     this.centerButtonText(this.backText, this.backButton);
     this.backButton.on('pointerdown', () => {
       this.game.sound.stopAll();

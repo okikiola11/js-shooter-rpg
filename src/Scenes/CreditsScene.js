@@ -39,11 +39,11 @@ export default class CreditsScene extends Phaser.Scene {
     );
     Phaser.Display.Align.In.Center(this.creditsText, this.zone);
     Phaser.Display.Align.In.Center(this.madeByText, this.zone);
-    //Phaser.Display.Align.In.Center(this.bgByText, this.zone);
+    // Phaser.Display.Align.In.Center(this.bgByText, this.zone);
     Phaser.Display.Align.In.Center(this.musicByText, this.zone);
 
     this.madeByText.setY(1000);
-    //this.bgByText.setY(1000);
+    // this.bgByText.setY(1000);
     this.musicByText.setY(1000);
 
     this.creditsTween = this.tweens.add({
