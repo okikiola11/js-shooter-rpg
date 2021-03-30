@@ -1,4 +1,4 @@
-import config from '../../config';
+import config from '../Objects/config';
 
 const baseURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
 const key = config.API_KEY;
