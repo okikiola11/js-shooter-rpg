@@ -72,7 +72,7 @@ export default class CreditsScene extends Phaser.Scene {
       delay: 1000,
       onComplete() {
         // eslint-disable-next-line no-unused-expressions
-        this.madeByTween.destroy;
+        this.madeByText.destroy;
       },
     });
 

@@ -1,5 +1,7 @@
+import config from '../../config';
+
 const baseURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
-const key = 'JEs0kzQgvvjQBRvlrgZH';
+const key = config.API_KEY;
 
 const postScores = async (name, score) => {
   const response = await fetch(`${baseURL}/games/${key}/scores`, {
@@ -11,9 +13,13 @@ const postScores = async (name, score) => {
     },
     body: JSON.stringify({ user: name, score: Number(score) }),
   });
-  if (response.ok) {
+  if (response.status === 200) {
     return response.json();
   }
+  // return Promise.reject({
+  //   status: response.status,
+  //   statusText: response.statusText,
+  // });
   throw new Error('Error!');
 };
 

@@ -56,7 +56,7 @@ export default class GameScene extends Phaser.Scene {
     this.topScoreApi = this.add.text(
       200,
       10,
-      `Top Score: `,
+      'Top Score: ',
       {
         fontSize: 20,
         align: 'left',
@@ -79,10 +79,11 @@ export default class GameScene extends Phaser.Scene {
       'sprPlayer',
     );
 
-    this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-    this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    // this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+    // this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    // this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    // this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    this.cursorKeys = this.input.keyboard.createCursorKeys();
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.enemies = this.add.group();
@@ -125,7 +126,6 @@ export default class GameScene extends Phaser.Scene {
       loop: true,
     });
 
-    // ADD COLLISION BETWEEN THE TWO GAME OBJECTS
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
@@ -155,7 +155,7 @@ export default class GameScene extends Phaser.Scene {
       }
     });
 
-    this.topScore()
+    this.topScore();
   }
 
   addScore(amount) {
@@ -181,14 +181,14 @@ export default class GameScene extends Phaser.Scene {
   update() {
     if (!this.player.getData('isDead')) {
       this.player.update();
-      if (this.keyW.isDown) {
+      if (this.cursorKeys.up.isDown) {
         this.player.moveUp();
-      } else if (this.keyS.isDown) {
+      } else if (this.cursorKeys.down.isDown) {
         this.player.moveDown();
       }
-      if (this.keyA.isDown) {
+      if (this.cursorKeys.left.isDown) {
         this.player.moveLeft();
-      } else if (this.keyD.isDown) {
+      } else if (this.cursorKeys.right.isDown) {
         this.player.moveRight();
       }
 

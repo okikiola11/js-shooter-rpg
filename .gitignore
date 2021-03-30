@@ -9,6 +9,7 @@ Thumbs.db
 
 # Vendors
 node_modules/
+config.js
 
 # Build
 dist/
