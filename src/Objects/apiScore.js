@@ -6,7 +6,6 @@ const postScores = async (name, score) => {
     method: 'POST',
     mode: 'cors',
     headers: {
-      Accept: 'Application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ user: name, score: Number(score) }),
@@ -14,10 +13,6 @@ const postScores = async (name, score) => {
   if (response.status === 200) {
     return response.json();
   }
-  // return Promise.reject({
-  //   status: response.status,
-  //   statusText: response.statusText,
-  // });
   throw new Error('Error!');
 };
 

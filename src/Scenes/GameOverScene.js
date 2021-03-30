@@ -127,7 +127,7 @@ export default class GameOverScene extends Phaser.Scene {
       this.centerButtonText(this.gameText, this.gameButton2);
 
       this.gameButton2.on('pointerdown', () => {
-        postScores(this.playersName, this.gameScore);
+        postScores(localStorage.getItem('playersName'), this.gameScore);
         this.scene.start('Title');
       });
     }
