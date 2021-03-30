@@ -1,10 +1,14 @@
 {
   "name": "js-shooter-game",
+  "jest": {
+    "verbose": true
+  },
   "version": "1.0.0",
   "description": "A javascript shooter game using phaser.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test-watch": "jest --watch */test",
     "build": "webpack --config webpack/prod.js ",
     "start": "webpack-dev-server --config webpack/base.js --open"
   },
@@ -34,6 +38,10 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.6.3",
+    "jest-canvas-mock": "^2.3.1",
+    "jest-expect-subclass": "^1.0.1",
+    "jest-fetch-mock": "^3.0.3",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-csstree-validator": "^1.9.0",
