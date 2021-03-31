@@ -114,22 +114,22 @@ export default class GameOverScene extends Phaser.Scene {
     this.input.on('pointerout', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton1');
     });
-
-    this.gameButton2 = this.add.sprite(395, 530, 'blueButton1').setInteractive();
-    this.centerButton(this.gameButton, 1);
-
-    this.gameText = this.add.text(0, 0, 'Submit Score', { fontSize: '25px', fill: '#fff' });
-    this.centerButtonText(this.gameText, this.gameButton2);
-
-    this.gameButton2.on('pointerdown', () => {
-      postScores(localStorage.getItem('playersName'), this.gameScore);
-      this.scene.start('Title');
-    });
   }
 
   checkHighScore() {
     if (this.myScore > this.savedScore) {
       this.congrats.setText('CONGRATULATIONS NEW HIGHSCORE!!!');
+
+      this.gameButton2 = this.add.sprite(395, 530, 'blueButton1').setInteractive();
+      this.centerButton(this.gameButton, 1);
+
+      this.gameText = this.add.text(0, 0, 'Submit Score', { fontSize: '25px', fill: '#fff' });
+      this.centerButtonText(this.gameText, this.gameButton2);
+
+      this.gameButton2.on('pointerdown', () => {
+        postScores(localStorage.getItem('playersName'), this.gameScore);
+        this.scene.start('Title');
+      });
     }
   }
 

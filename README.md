@@ -10,7 +10,6 @@ This project is an RPG shooter game built with Phaser 3, a JavaScript game frame
 - PostMan
 - JavaScript
 - Jest
-- Webpack
 - HTML & CSS
 
 ## How To Play
@@ -22,11 +21,12 @@ This project is an RPG shooter game built with Phaser 3, a JavaScript game frame
 To get a copy up and running follow these simple example steps:-
 
 - Clone <a href="https://github.com/okikiola11/js-shooter-rpg.git">Here</a> to your local machine.
-- Run npm install
-- npm start
+- Run: npm install
+- Run: npm start
 
 
 ## Loading Screen
+![screenshot](src/assets/screensht/screenshot4.png)
 
 ### Menu Screen
 ![screenshot](src/assets/screensht/screenshot1.png)
@@ -37,7 +37,7 @@ To get a copy up and running follow these simple example steps:-
 ### Game Screen
 ![screenshot](src/assets/screensht/screenshot3.png)
 
-### Game Screen
+### GameOver Screen
 ![screenshot](src/assets/screensht/screenshot5.png)
 
 ## Game Development

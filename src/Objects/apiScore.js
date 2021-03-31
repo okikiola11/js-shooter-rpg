@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+
 const baseURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api';
 const key = 'JEs0kzQgvvjQBRvlrgZH';
 
@@ -6,6 +8,7 @@ const postScores = async (name, score) => {
     method: 'POST',
     mode: 'cors',
     headers: {
+      Accept: 'Application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ user: name, score: Number(score) }),
@@ -13,7 +16,6 @@ const postScores = async (name, score) => {
   if (response.status === 200) {
     return response.json();
   }
-  throw new Error('Error!');
 };
 
 const getScores = async () => {
