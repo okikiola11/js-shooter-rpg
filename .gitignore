@@ -8,6 +8,7 @@ Thumbs.db
 .vscode
 
 # Vendors
+src/assets/content/bullet.html
 node_modules/
 
 # Build
